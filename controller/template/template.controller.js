@@ -1,4 +1,4 @@
-// Models 
+// Models
 import { SectionModel } from "../../models/section.model.js";
 import { templateModel } from "../../models/template.model.js";
 
@@ -79,7 +79,7 @@ export const createTemplate = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      message: "Template and sections created successfully",
+      message: "Website created successfully",
     });
   } catch (error) {
     console.error("Error creating template:", error.message || error);
@@ -138,7 +138,6 @@ export const updateTemplate = async (req, res) => {
       success: true,
       message: "Template updated successfully!",
     });
-
   } catch (error) {
     console.error("Error in updating template:", error.message || error);
 

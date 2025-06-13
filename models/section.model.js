@@ -23,12 +23,20 @@ const navbarSchema = SectionModel.discriminator(
         src: { type: String, required: true },
         alt: { type: String }, // optional
       },
-      links: [
-        {
-          title: { type: String, required: true },
-          link: { type: String, required: true },
-        },
-      ],
+      links: {
+        displayedLinks: [
+          {
+            lable: { type: String, required: true },
+            link: { type: String, required: true },
+          },
+        ],
+        menuLinks: [
+          {
+            lable: { type: String, required: true },
+            link: { type: String, required: true },
+          },
+        ],
+      },
     },
   })
 );
@@ -55,9 +63,9 @@ const gallerySchema = SectionModel.discriminator(
   "Gallery",
   new mongoose.Schema({
     data: {
-      heading: {
-        title: { type: String, required: true },
-        subtitle: { type: String }, // optional
+      headings: {
+        heading: { type: String, required: true },
+        subHeading: { type: String }, // optional
       },
       images: [
         {
@@ -97,9 +105,12 @@ const dishesSchema = SectionModel.discriminator(
       },
       dishes: [
         {
-          image: { type: String, required: true },
           name: { type: String, required: true },
           description: { type: String, required: true },
+          image: {
+            src: { type: String, required: true },
+            alt: { type: String },
+          },
         },
       ],
     },
@@ -115,12 +126,10 @@ const giftCardSchema = SectionModel.discriminator(
         title: { type: String, required: true },
         description: { type: String },
       },
-      questions: [
-        {
-          question: { type: String, required: true },
-          answer: { type: String, required: true },
-        },
-      ],
+      images: {
+        src: { type: String, required: true },
+        alt: { type: String }, // optional
+      },
     },
   })
 );
@@ -148,8 +157,8 @@ const locationSchema = SectionModel.discriminator(
   "Location",
   new mongoose.Schema({
     data: {
-      heading: {
-        title: { type: String, required: true },
+      headings: {
+        heading: { type: String, required: true },
       },
       locations: [
         {
